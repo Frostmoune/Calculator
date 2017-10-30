@@ -1,0 +1,70 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+    <style name="input_text">
+        <item name="android:layout_gravity">fill</item>
+        <item name="android:gravity">center_vertical|left</item>
+        <item name="android:layout_columnSpan">5</item>
+        <item name="android:layout_height">48dp</item>
+        <item name="android:layout_width">216dp</item>
+        <item name="android:layout_marginTop">30dp</item>
+        <item name="android:layout_marginLeft">6dp</item>
+        <item name="android:layout_marginRight">6dp</item>
+        <item name="android:layout_marginStart">6dp</item>
+        <item name="android:layout_marginEnd">6dp</item>
+        <item name="android:scrollbars">vertical</item>
+        <item name="android:singleLine">false</item>
+        <item name="android:textColor">@color/input_text</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textScaleX">1.0</item>
+        <item name="android:background">@drawable/border</item>
+    </style>
+    <style name="button">
+        <item name="android:layout_gravity">fill</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_columnSpan">1</item>
+        <item name="android:layout_width">38.4dp</item>
+        <item name="android:layout_height">42dp</item>
+        <item name="android:background">@drawable/selectora</item>
+        <item name="android:layout_marginTop">14.4dp</item>
+        <item name="android:layout_marginLeft">6dp</item>
+        <item name="android:layout_marginStart">6dp</item>
+        <item name="android:layout_marginEnd">6dp</item>
+        <item name="android:layout_marginRight">6dp</item>
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">@drawable/color_selector</item>
+        <item name="android:focusable">true</item>
+        <item name="android:state_enabled">true</item>
+    </style>
+    <style name="buttonb" parent="@style/button">
+        <item name="android:background">@drawable/selectorb</item>
+    </style>
+    <style name="buttonc" parent="@style/button">
+        <item name="android:layout_columnSpan">2</item>
+        <item name="android:layout_width">82.8dp</item>
+    </style>
+    <style name="buttond" parent="@style/buttonc">
+        <item name="android:background">@drawable/selectorb</item>
+        <item name="android:textSize">30sp</item>
+    </style>
+    <style name="buttone" parent="@style/buttond">
+        <item name="android:background">@drawable/selectorc</item>
+    </style>
+    <style name="buttonf" parent="@style/button">
+        <item name="android:background">@drawable/selectorc</item>
+    </style>
+    <style name="edit_text" parent="@style/input_text">
+        <item name="android:inputType">text</item>
+        <item name="android:layout_columnSpan">4</item>
+        <item name="android:layout_marginTop">24dp</item>
+        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_width">276dp</item>
+    </style>
+
+</resources>
