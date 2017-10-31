@@ -9,49 +9,60 @@
     </style>
     <style name="input_text">
         <item name="android:layout_gravity">fill</item>
+        <!--占满-->
         <item name="android:gravity">center_vertical|left</item>
+        <!--内部文字等垂直居中左对齐-->
         <item name="android:layout_columnSpan">5</item>
-        <item name="android:layout_height">48dp</item>
-        <item name="android:layout_width">216dp</item>
-        <item name="android:layout_marginTop">30dp</item>
-        <item name="android:layout_marginLeft">6dp</item>
-        <item name="android:layout_marginRight">6dp</item>
-        <item name="android:layout_marginStart">6dp</item>
-        <item name="android:layout_marginEnd">6dp</item>
+        <!--占的列数-->
+        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_width">270dp</item>
+        <!--宽和高-->
+        <item name="android:layout_marginTop">40dp</item>
+        <item name="android:layout_marginLeft">7.5dp</item>
+        <item name="android:layout_marginRight">7.5dp</item>
+        <item name="android:layout_marginStart">7.5dp</item>
+        <item name="android:layout_marginEnd">7.5dp</item>
+        <!--设定和别的控件的距离-->
         <item name="android:scrollbars">vertical</item>
+        <!--设定其可以垂直滑动-->
         <item name="android:singleLine">false</item>
+        <!--设定其内容不在一行显示-->
         <item name="android:textColor">@color/input_text</item>
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">25sp</item>
         <item name="android:textScaleX">1.0</item>
+        <!--设定文字颜色、大小、文字间距-->
         <item name="android:background">@drawable/border</item>
+        <!--设定背景-->
     </style>
     <style name="button">
         <item name="android:layout_gravity">fill</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_columnSpan">1</item>
-        <item name="android:layout_width">38.4dp</item>
-        <item name="android:layout_height">42dp</item>
+        <item name="android:layout_width">48dp</item>
+        <item name="android:layout_height">55dp</item>
         <item name="android:background">@drawable/selectora</item>
-        <item name="android:layout_marginTop">14.4dp</item>
-        <item name="android:layout_marginLeft">6dp</item>
-        <item name="android:layout_marginStart">6dp</item>
-        <item name="android:layout_marginEnd">6dp</item>
-        <item name="android:layout_marginRight">6dp</item>
-        <item name="android:textSize">21sp</item>
+        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginLeft">7.5dp</item>
+        <item name="android:layout_marginStart">7.5dp</item>
+        <item name="android:layout_marginEnd">7.5dp</item>
+        <item name="android:layout_marginRight">7.5dp</item>
+        <item name="android:textSize">28sp</item>
         <item name="android:textColor">@drawable/color_selector</item>
         <item name="android:focusable">true</item>
         <item name="android:state_enabled">true</item>
+        <!--后面两条属性用于设定按钮可以点击-->
     </style>
     <style name="buttonb" parent="@style/button">
         <item name="android:background">@drawable/selectorb</item>
+        <!--parent表示继承自-->
     </style>
     <style name="buttonc" parent="@style/button">
         <item name="android:layout_columnSpan">2</item>
-        <item name="android:layout_width">82.8dp</item>
+        <item name="android:layout_width">103.5dp</item>
     </style>
     <style name="buttond" parent="@style/buttonc">
         <item name="android:background">@drawable/selectorb</item>
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">39sp</item>
     </style>
     <style name="buttone" parent="@style/buttond">
         <item name="android:background">@drawable/selectorc</item>
@@ -59,12 +70,12 @@
     <style name="buttonf" parent="@style/button">
         <item name="android:background">@drawable/selectorc</item>
     </style>
-    <style name="edit_text" parent="@style/input_text">
-        <item name="android:inputType">text</item>
-        <item name="android:layout_columnSpan">4</item>
-        <item name="android:layout_marginTop">24dp</item>
-        <item name="android:layout_height">70dp</item>
-        <item name="android:layout_width">276dp</item>
-    </style>
-
+    <!--<style name="edit_text" parent="@style/input_text">-->
+        <!--<item name="android:inputType">text</item>-->
+        <!--<item name="android:layout_columnSpan">5</item>-->
+        <!--<item name="android:layout_marginTop">30dp</item>-->
+        <!--<item name="android:layout_height">70dp</item>-->
+        <!--<item name="android:layout_width">276dp</item>-->
+    <!--</style>-->
 </resources>
+<!--此文件实际上相当于css文件-->

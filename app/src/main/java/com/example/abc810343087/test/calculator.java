@@ -21,47 +21,55 @@ class MyString{
         exp=nowexp;
         isNum=flag;
     }
-}
+}//用于储存表达式中的字符串，isNum用于判断该字符串是否为数字
 
 public class calculator {
     private String Expressions;
+    //表达式（显示在显示框中的）
     private Vector<String> History_Expressions;
+    //历史表达式
     private static boolean warningflag;
-    private static boolean Removeflag;
+    //用于判断表达式是否合法
     private int Nowpos;
-    public calculator(){Expressions=null;warningflag=true;Removeflag=false;History_Expressions=new Vector<String>();Nowpos=0;}
+    //当前表达式在历史表达式的位置
+    public calculator(){Expressions=null;warningflag=true;History_Expressions=new Vector<String>();Nowpos=0;}
+    //构造函数
     public void add(char id){
         if(Expressions==null){
             Expressions=String.valueOf(id);
         }
         else Expressions+=id;
     }
+    //用于给添加数字或字符
+    public String getExpressions(){
+        return Expressions;
+    }//表达式接口
+    public void setExpressions(String exp){
+        Expressions=exp;
+    }
+    public void Remove(){
+        Expressions=Expressions.substring(0,Expressions.length()-1);
+    }//用于计算器的退格
+    public void Removeall(){
+        if(!warningflag){
+            Expressions=null;
+            warningflag=true;
+        }
+    }//用于计算器的清屏
     private int sign(char ch){
         if (ch == '*' || ch == '/')return 2;
         if (ch == '+' || ch == '-')return 1;
         if (ch == ')')return 3;
         if (ch == '(')return -1;
         return 0;
-    }
-    public String getExpressions(){
-        return Expressions;
-    }
-    public void Remove(){
-        Expressions=Expressions.substring(0,Expressions.length()-1);
-    }
-    public void Removeall(){
-        if(Removeflag&&!warningflag){
-            Expressions=null;
-            Removeflag=false;
-        }
-    }
+    }//用于判断运算符优先级
     public void Calculate(){
         int i=0,j=0;
         boolean flag=false;
         Stack<MyString> nowstack=new Stack<MyString>(),tempstack=new Stack<MyString>();
-        Removeflag=true;
         for(i=0;i<Expressions.length();++i){
             if(Character.isDigit(Expressions.charAt(i))||((Expressions.charAt(i) == '-') && (i - 1<0 || Expressions.charAt(i-1)=='('))){
+                //处理负数
                 flag=true;
                 if (!Character.isDigit(Expressions.charAt(i))) {
                     j = i + 1;
@@ -78,14 +86,14 @@ public class calculator {
             }
             if(Expressions.charAt(i)=='('){
                 tempstack.push(new MyString(Expressions.substring(i,i+1),false));
-            }//处理右括号
+            }//处理左括号
             if(Expressions.charAt(i)==')'){
                 while(!tempstack.empty()){
                     MyString now=tempstack.pop();
                     if(now.exp.equals("("))break;
                     nowstack.push(now);
                 }
-            }//处理左括号
+            }//处理右括号
             if(sign(Expressions.charAt(i))>0&&sign(Expressions.charAt(i))<3){
                 if(tempstack.empty()||tempstack.peek().exp.equals("(")){
                     tempstack.push(new MyString(Expressions.substring(i,i+1),false));
@@ -106,12 +114,15 @@ public class calculator {
         }
         while(!tempstack.empty()){
             nowstack.push(tempstack.pop());
-        }//以上代码用于中缀转前缀
+        }//以上代码用于中缀转后缀
         while(!nowstack.empty()){
             tempstack.push(nowstack.pop());
         }
         Stack<Double> numstack=new Stack<Double>();
         while(!tempstack.empty()){
+            if(!warningflag){
+                break;
+            }
             if(tempstack.peek().isNum){
                 numstack.push(Double.valueOf(tempstack.pop().exp));
             }
@@ -132,7 +143,7 @@ public class calculator {
                     break;
                 }
             }
-        }//以上代码用于前缀表达式求值
+        }//以上代码用于后缀表达式求值
         if(warningflag){
             BigDecimal b=new BigDecimal(numstack.pop());
             Expressions=b.setScale(4,BigDecimal.ROUND_HALF_UP).toString();
@@ -141,7 +152,6 @@ public class calculator {
         }
         else {
             Expressions="Wrong Input!";
-            warningflag=true;
         }
     }
     public void ToUp(){
@@ -149,19 +159,16 @@ public class calculator {
             Nowpos--;
             Expressions=History_Expressions.get(Nowpos);
         }
-    }
+    }//返回历史表达式的上一个
     public void ToDown(){
         if(Nowpos<History_Expressions.size()-1){
             Nowpos++;
             Expressions=History_Expressions.get(Nowpos);
         }
-    }
+    }//返回历史表达式的下一个
     public void Clear(){
         History_Expressions.clear();
         Nowpos=0;
         Expressions="";
-    }
-    public void setExpressions(String exp){
-        Expressions=exp;
-    }
+    }//清除所有历史表达式
 }

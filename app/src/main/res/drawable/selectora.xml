@@ -9,3 +9,4 @@
     <item android:state_pressed="false" android:state_focused="false"
         android:drawable="@drawable/botton"/>
 </selector>
+<!--selector用于对控件样式做一个选择，比如这里点击按钮时用change样式，正常情况用botton样式-->
