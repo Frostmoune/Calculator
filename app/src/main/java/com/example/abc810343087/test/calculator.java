@@ -68,6 +68,10 @@ public class calculator {
         boolean flag=false;
         Stack<MyString> nowstack=new Stack<MyString>(),tempstack=new Stack<MyString>();
         for(i=0;i<Expressions.length();++i){
+            if(Expressions.charAt(i)=='.'&&!Character.isDigit(Expressions.charAt(i+1))&&i<Expressions.length()-1){
+                warningflag=false;
+            }
+            if(!warningflag)break;
             if(Expressions.charAt(i)=='.'||Character.isDigit(Expressions.charAt(i))||((Expressions.charAt(i) == '-') && (i - 1<0 || Expressions.charAt(i-1)=='('))){
                 //处理负数
                 flag=true;
