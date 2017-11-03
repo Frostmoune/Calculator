@@ -14,14 +14,14 @@
         <!--内部文字等垂直居中左对齐-->
         <item name="android:layout_columnSpan">5</item>
         <!--占的列数-->
-        <item name="android:layout_height">70dp</item>
-        <item name="android:layout_width">270dp</item>
+        <item name="android:layout_height">77dp</item>
+        <item name="android:layout_width">295dp</item>
         <!--宽和高-->
         <item name="android:layout_marginTop">40dp</item>
-        <item name="android:layout_marginLeft">7.5dp</item>
-        <item name="android:layout_marginRight">7.5dp</item>
-        <item name="android:layout_marginStart">7.5dp</item>
-        <item name="android:layout_marginEnd">7.5dp</item>
+        <item name="android:layout_marginLeft">9dp</item>
+        <item name="android:layout_marginRight">9dp</item>
+        <item name="android:layout_marginStart">9dp</item>
+        <item name="android:layout_marginEnd">9dp</item>
         <!--设定和别的控件的距离-->
         <item name="android:scrollbars">vertical</item>
         <!--设定其可以垂直滑动-->
@@ -38,15 +38,15 @@
         <item name="android:layout_gravity">fill</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_columnSpan">1</item>
-        <item name="android:layout_width">48dp</item>
-        <item name="android:layout_height">55dp</item>
+        <item name="android:layout_width">54dp</item>
+        <item name="android:layout_height">58dp</item>
         <item name="android:background">@drawable/selectora</item>
         <item name="android:layout_marginTop">20dp</item>
-        <item name="android:layout_marginLeft">7.5dp</item>
-        <item name="android:layout_marginStart">7.5dp</item>
-        <item name="android:layout_marginEnd">7.5dp</item>
-        <item name="android:layout_marginRight">7.5dp</item>
-        <item name="android:textSize">28sp</item>
+        <item name="android:layout_marginLeft">9dp</item>
+        <item name="android:layout_marginStart">9dp</item>
+        <item name="android:layout_marginEnd">9dp</item>
+        <item name="android:layout_marginRight">9dp</item>
+        <item name="android:textSize">32sp</item>
         <item name="android:textColor">@drawable/color_selector</item>
         <item name="android:focusable">true</item>
         <item name="android:state_enabled">true</item>
@@ -58,11 +58,11 @@
     </style>
     <style name="buttonc" parent="@style/button">
         <item name="android:layout_columnSpan">2</item>
-        <item name="android:layout_width">103.5dp</item>
+        <item name="android:layout_width">114dp</item>
     </style>
     <style name="buttond" parent="@style/buttonc">
         <item name="android:background">@drawable/selectorb</item>
-        <item name="android:textSize">39sp</item>
+        <item name="android:textSize">43sp</item>
     </style>
     <style name="buttone" parent="@style/buttond">
         <item name="android:background">@drawable/selectorc</item>

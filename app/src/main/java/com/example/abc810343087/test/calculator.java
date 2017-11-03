@@ -48,7 +48,7 @@ public class calculator {
         Expressions=exp;
     }
     public void Remove(){
-        Expressions=Expressions.substring(0,Expressions.length()-1);
+        if(Expressions.length()>0)Expressions=Expressions.substring(0,Expressions.length()-1);
     }//用于计算器的退格
     public void Removeall(){
         if(!warningflag){
@@ -68,7 +68,7 @@ public class calculator {
         boolean flag=false;
         Stack<MyString> nowstack=new Stack<MyString>(),tempstack=new Stack<MyString>();
         for(i=0;i<Expressions.length();++i){
-            if(Character.isDigit(Expressions.charAt(i))||((Expressions.charAt(i) == '-') && (i - 1<0 || Expressions.charAt(i-1)=='('))){
+            if(Expressions.charAt(i)=='.'||Character.isDigit(Expressions.charAt(i))||((Expressions.charAt(i) == '-') && (i - 1<0 || Expressions.charAt(i-1)=='('))){
                 //处理负数
                 flag=true;
                 if (!Character.isDigit(Expressions.charAt(i))) {
@@ -124,7 +124,9 @@ public class calculator {
                 break;
             }
             if(tempstack.peek().isNum){
-                numstack.push(Double.valueOf(tempstack.pop().exp));
+                String now=tempstack.pop().exp;
+                double res=Double.valueOf(now);
+                numstack.push(res);
             }
             else{
                 String now=tempstack.pop().exp;
@@ -134,7 +136,13 @@ public class calculator {
                     if(now.equals("+"))res=b+a;
                     if(now.equals("-"))res=b-a;
                     if(now.equals("*"))res=b*a;
-                    if(now.equals("/"))res=b/a;
+                    if(now.equals("/")){
+                        if(a==0){
+                            warningflag=false;
+                            break;
+                        }
+                        res=b/a;
+                    }
                     numstack.push(res);
                 }
                 else {
@@ -145,7 +153,11 @@ public class calculator {
             }
         }//以上代码用于后缀表达式求值
         if(warningflag){
-            BigDecimal b=new BigDecimal(numstack.pop());
+            double res=numstack.pop();
+            while(!numstack.empty()){
+                res*=numstack.pop();
+            }
+            BigDecimal b=new BigDecimal(res);
             Expressions=b.setScale(4,BigDecimal.ROUND_HALF_UP).toString();
             History_Expressions.add(Expressions);
             Nowpos=History_Expressions.size()-1;
