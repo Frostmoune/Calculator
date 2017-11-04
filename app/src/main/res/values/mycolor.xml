@@ -9,5 +9,6 @@
     <color name="background">#f4e7e6e6</color>
     <color name="white">#f4fffefe</color>
     <color name="black">#da050000</color>
+    <color name="blue">#f41215f2</color>
 </resources>
 <!--设定color的值-->

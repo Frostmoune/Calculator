@@ -187,4 +187,54 @@ public class calculator {
         Nowpos=0;
         Expressions="";
     }//清除所有历史表达式
+    public int Factorial(int n){
+        if(!warningflag){
+            warningflag=true;
+        }
+        if(n<0){
+            warningflag=false;
+            Expressions="Wrong Input!";
+            return -1;
+        }
+        int res=1;
+        for(int i=2;i<=n;++i){
+            res*=i;
+        }
+        Expressions=String.valueOf(res);
+        return res;
+    }
+    public int Permutation(int n,int r){
+        if(!warningflag){
+            warningflag=true;
+        }
+        if(n<r){
+            warningflag=false;
+            Expressions="Wrong Input!";
+            return -1;
+        }
+        int res=1,beg=n-r+1;
+        for(int i=beg;i<=n;++i){
+            res*=i;
+        }
+        Expressions=String.valueOf(res);
+        return res;
+    }
+    public int Combination(int n,int r){
+        if(!warningflag){
+            warningflag=true;
+        }
+        if(n<r){
+            warningflag=false;
+            Expressions="Wrong Input!";
+            return -1;
+        }
+        int res=Permutation(n,r)/Factorial(r);
+        Expressions=String.valueOf(res);
+        return res;
+    }
+    public double Power(double n,double r){
+        double res=Math.pow(n,r);
+        Expressions=Double.toString(res);
+        return res;
+    }
 }

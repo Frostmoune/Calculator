@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.GridLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 import android.view.View;
 import android.widget.Button;
@@ -31,6 +33,64 @@ public class MainActivity extends AppCompatActivity {
             });//设置相应按钮的onclick事件
         }
     }//用于设定输入键的onclick事件
+    public void Prepare_for_advanced_function(){
+        Button newbut=(Button)findViewById(R.id.butTo);
+        newbut.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Mycalculator.Clear();
+                EditText nowedit=(EditText)findViewById(R.id.Edit);
+                Mycalculator.setExpressions(nowedit.getText().toString());
+                Mycalculator.Calculate();
+                TextView nowtext=(TextView)findViewById(R.id.Output);
+                nowtext.setText(Mycalculator.getExpressions());
+            }
+        });//输入求值的事件
+        newbut=(Button)findViewById(R.id.butCal);
+        newbut.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Mycalculator.Clear();
+                RadioGroup group=(RadioGroup)findViewById(R.id.radioGroup);
+                for(int i=0;i<group.getChildCount();++i){
+                    RadioButton now=(RadioButton)group.getChildAt(i);
+                    if(now.isChecked()){
+                        EditText editr=(EditText)findViewById(R.id.Editr),editn=(EditText)findViewById(R.id.Editn);
+                        double r=Double.valueOf(editr.getText().toString()),n=Double.valueOf(editn.getText().toString());
+                        if(i<=1&&(r!=(int)r||n!=(int)n)){
+                            Mycalculator.setExpressions("Wrong Input!");
+                            TextView nowtext=(TextView)findViewById(R.id.Output);
+                            nowtext.setText(Mycalculator.getExpressions());
+                        }
+                        else{
+                            switch(i){
+                                case 0:
+                                    Mycalculator.Combination((int)n,(int)r);
+                                    break;
+                                case 1:
+                                    Mycalculator.Permutation((int)n,(int)r);
+                                    break;
+                                case 2:
+                                    Mycalculator.Power(n,r);
+                                    break;
+                                default:
+                                    break;
+                            }
+                            String nowexp=Mycalculator.getExpressions();
+                            if(nowexp.equals("Wrong Input!")){
+                                TextView nowtext=(TextView)findViewById(R.id.Output);
+                                nowtext.setText(Mycalculator.getExpressions());
+                            }
+                            else{
+                                TextView nowtext=(TextView)findViewById(R.id.Output_2);
+                                nowtext.setText(Mycalculator.getExpressions());
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
     public void Prepare_for_function(){
         Button newbut=(Button)findViewById(R.id.butEqual);
         newbut.setOnClickListener(new View.OnClickListener() {
@@ -77,17 +137,6 @@ public class MainActivity extends AppCompatActivity {
                 nowtext.setText(Mycalculator.getExpressions());
             }
         });//清除所有表达式的事件
-        newbut=(Button)findViewById(R.id.butTo);
-        newbut.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                EditText nowedit=(EditText)findViewById(R.id.Edit);
-                Mycalculator.setExpressions(nowedit.getText().toString());
-                Mycalculator.Calculate();
-                TextView nowtext=(TextView)findViewById(R.id.Output);
-                nowtext.setText(Mycalculator.getExpressions());
-            }
-        });
         TextView nowtext=(TextView)findViewById(R.id.input);
         nowtext.setMovementMethod(ScrollingMovementMethod.getInstance());
     }
@@ -98,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
         Mycalculator=new calculator();
         Prepare_for_output();
         Prepare_for_function();
+        Prepare_for_advanced_function();
     }//此函数实际相当于main函数
     public void addExpressions(char id){
         Mycalculator.add(id);

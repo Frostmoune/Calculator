@@ -9,10 +9,15 @@
         android:layout_height="wrap_content"
         android:columnCount="5"
         android:orientation="horizontal"
-        android:rowCount="9"
+        android:rowCount="13"
         android:background="@color/background">
         <!--表示是网格布局-->
         <!--列数为5，行数为7-->
+        <TextView
+            style="@style/titlea"
+            android:id="@+id/title_a"
+            android:text="Simple Calculator"
+            />
         <TextView
             android:id="@+id/input"
             style="@style/input_text"
@@ -131,6 +136,15 @@
             android:id="@+id/butEqual"
             android:text="="
             />
+        <TextView
+            style="@style/titleb"
+            android:id="@+id/titleb"
+            android:text="Advanced Calculator"
+            />
+        <TextView
+            style="@style/output_text"
+            android:id="@+id/Output"
+            />
         <EditText
             style="@style/edit_text"
             android:id="@+id/Edit"
@@ -140,9 +154,39 @@
             android:id="@+id/butTo"
             android:text="To"
         />
+        <RadioGroup
+            android:id="@+id/radioGroup"
+            style="@style/Radio"
+            >
+            <RadioButton
+                style="@style/select"
+                android:id="@+id/Combination"
+                android:text="Combination"/>
+            <RadioButton
+                style="@style/select"
+                android:id="@+id/Permutation"
+                android:text="Permutation"/>
+            <RadioButton
+                style="@style/select"
+                android:id="@+id/Power"
+                android:text="Power"/>
+        </RadioGroup>
+        <EditText
+            style="@style/edit_2"
+            android:id="@+id/Editn"
+            />
+        <EditText
+            style="@style/edit_2"
+            android:id="@+id/Editr"
+            />
+        <Button
+            style="@style/buttonh"
+            android:id="@+id/butCal"
+            android:text="="
+            />
         <TextView
-            style="@style/output_text"
-            android:id="@+id/Output"
+            style="@style/output_2"
+            android:id="@+id/Output_2"
             />
     </GridLayout>
 </ScrollView>
