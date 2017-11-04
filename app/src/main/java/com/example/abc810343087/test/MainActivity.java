@@ -52,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Mycalculator.Clear();
                 RadioGroup group=(RadioGroup)findViewById(R.id.radioGroup);
+                TextView mytextb=(TextView)findViewById(R.id.Output_2);
+                mytextb.setText("");
+                TextView mytexta=(TextView)findViewById(R.id.Output);
+                mytexta.setText("");
                 for(int i=0;i<group.getChildCount();++i){
                     RadioButton now=(RadioButton)group.getChildAt(i);
                     if(now.isChecked()){
@@ -59,8 +63,7 @@ public class MainActivity extends AppCompatActivity {
                         double r=Double.valueOf(editr.getText().toString()),n=Double.valueOf(editn.getText().toString());
                         if(i<=1&&(r!=(int)r||n!=(int)n)){
                             Mycalculator.setExpressions("Wrong Input!");
-                            TextView nowtext=(TextView)findViewById(R.id.Output);
-                            nowtext.setText(Mycalculator.getExpressions());
+                            mytexta.setText(Mycalculator.getExpressions());
                         }
                         else{
                             switch(i){
@@ -78,12 +81,10 @@ public class MainActivity extends AppCompatActivity {
                             }
                             String nowexp=Mycalculator.getExpressions();
                             if(nowexp.equals("Wrong Input!")){
-                                TextView nowtext=(TextView)findViewById(R.id.Output);
-                                nowtext.setText(Mycalculator.getExpressions());
+                                mytexta.setText(Mycalculator.getExpressions());
                             }
                             else{
-                                TextView nowtext=(TextView)findViewById(R.id.Output_2);
-                                nowtext.setText(Mycalculator.getExpressions());
+                                mytextb.setText(Mycalculator.getExpressions());
                             }
                         }
                     }
