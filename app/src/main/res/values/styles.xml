@@ -70,12 +70,24 @@
     <style name="buttonf" parent="@style/button">
         <item name="android:background">@drawable/selectorc</item>
     </style>
-    <!--<style name="edit_text" parent="@style/input_text">-->
-        <!--<item name="android:inputType">text</item>-->
-        <!--<item name="android:layout_columnSpan">5</item>-->
-        <!--<item name="android:layout_marginTop">30dp</item>-->
-        <!--<item name="android:layout_height">70dp</item>-->
-        <!--<item name="android:layout_width">276dp</item>-->
-    <!--</style>-->
+    <style name="buttong" parent="@style/buttonb">
+        <item name="android:layout_marginTop">56dp</item>
+    </style>
+    <style name="edit_text" parent="@style/input_text">
+        <item name="android:inputType">text</item>
+        <item name="android:layout_columnSpan">4</item>
+        <item name="android:layout_marginTop">56dp</item>
+        <item name="android:layout_height">67dp</item>
+        <item name="android:layout_width">221dp</item>
+    </style>
+    <style name="output_text" parent="@style/edit_text">
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_columnSpan">5</item>
+        <item name="android:layout_height">39dp</item>
+        <item name="android:layout_width">295dp</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/red</item>
+        <item name="android:background">@drawable/output_border</item>
+    </style>
 </resources>
 <!--此文件实际上相当于css文件-->

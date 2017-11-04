@@ -77,17 +77,17 @@ public class MainActivity extends AppCompatActivity {
                 nowtext.setText(Mycalculator.getExpressions());
             }
         });//清除所有表达式的事件
-//        newbut=(Button)findViewById(R.id.butTo);
-//        newbut.setOnClickListener(new View.OnClickListener(){
-//            @Override
-//            public void onClick(View v) {
-//                EditText nowedit=(EditText)findViewById(R.id.Edit);
-//                Mycalculator.setExpressions(nowedit.getText().toString());
-//                Mycalculator.Calculate();
-//                TextView nowtext=(TextView)findViewById(R.id.input);
-//                nowtext.setText(Mycalculator.getExpressions());
-//            }
-//        });
+        newbut=(Button)findViewById(R.id.butTo);
+        newbut.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                EditText nowedit=(EditText)findViewById(R.id.Edit);
+                Mycalculator.setExpressions(nowedit.getText().toString());
+                Mycalculator.Calculate();
+                TextView nowtext=(TextView)findViewById(R.id.Output);
+                nowtext.setText(Mycalculator.getExpressions());
+            }
+        });
         TextView nowtext=(TextView)findViewById(R.id.input);
         nowtext.setMovementMethod(ScrollingMovementMethod.getInstance());
     }
