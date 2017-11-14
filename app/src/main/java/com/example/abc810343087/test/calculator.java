@@ -32,7 +32,7 @@ public class calculator {
     //用于判断表达式是否合法
     private int Nowpos;
     //当前表达式在历史表达式的位置
-    public calculator(){Expressions=null;warningflag=true;History_Expressions=new Vector<String>();Nowpos=0;}
+    public calculator(){Expressions="";warningflag=true;History_Expressions=new Vector<String>();Nowpos=0;}
     //构造函数
     public void add(char id){
         if(Expressions==null){
@@ -236,5 +236,71 @@ public class calculator {
         double res=Math.pow(n,r);
         Expressions=Double.toString(res);
         return res;
+    }
+    private int changeToDec(int from){
+        int num=0,size=Expressions.length()-1,nownum=0;
+        for(int i=0;i<=size;++i){
+            if(Character.isDigit(Expressions.charAt(i))){
+                nownum=Expressions.charAt(i)-'0';
+                nownum*=Math.pow(from,size-i);
+                num+=nownum;
+            }
+            else if(from==16){
+                if(Expressions.charAt(i)<='F'&&Expressions.charAt(i)>='A'){
+                    nownum=Expressions.charAt(i)-'A'+10;
+                    nownum*=Math.pow(from,size-i);
+                    num+=nownum;
+                }
+                if(Expressions.charAt(i)<='f'&&Expressions.charAt(i)>='a'){
+                    nownum=Expressions.charAt(i)-'a'+10;
+                    nownum*=Math.pow(from,size-i);
+                    num+=nownum;
+                }
+                else{
+                    warningflag=false;
+                    break;
+                }
+            }
+            else {
+                warningflag=false;
+                break;
+            }
+        }
+        if(warningflag)return num;
+        return -1;
+    }
+    private String DecToOther(int num,int to){
+        String newexp="";
+        switch (to) {
+            case 2:
+                newexp=Integer.toBinaryString(num);
+                break;
+            case 8:
+                newexp=Integer.toOctalString(num);
+                break;
+            case 16:
+                newexp=Integer.toHexString(num);
+                break;
+            case 10:
+                newexp=Integer.toString(num);
+                break;
+            default:
+                warningflag=false;
+                break;
+        }
+        return newexp;
+    }
+    public void changeRadix(int from,int to){
+        warningflag=true;
+        if(from!=to){
+            int num=changeToDec(from);
+            if(!warningflag){
+                Expressions="Wrong Input!";
+            }
+            Expressions=DecToOther(num,to);
+            if(!warningflag){
+                Expressions="Wrong Input!";
+            }
+        }
     }
 }

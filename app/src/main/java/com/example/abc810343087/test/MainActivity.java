@@ -20,6 +20,7 @@ public class MainActivity extends AppCompatActivity {
                                                     R.id.but7,R.id.but8,R.id.but9, R.id.butPlus,R.id.butMinus,R.id.butMultiply,
                                                     R.id.butDivide,R.id.butParentheses_left,R.id.butParentheses_right,R.id.butPoint};//输入键对应的id
     private static final int[]function_id_names={R.id.butEqual,R.id.butUp,R.id.butDown,R.id.butRemove,R.id.butClear};
+    private static final int[]Radix_number={2,8,10,16};
     public void Prepare_for_output(){
         for(int i=0;i<17;++i){
             Button newbut=(Button)findViewById(Output_id_names[i]);//得到相应按钮
@@ -40,8 +41,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Mycalculator.Clear();
                 EditText nowedit=(EditText)findViewById(R.id.Edit);
-                Mycalculator.setExpressions(nowedit.getText().toString());
-                Mycalculator.Calculate();
+                if(nowedit.getText().toString().length()>0) {
+                    Mycalculator.setExpressions(nowedit.getText().toString());
+                    Mycalculator.Calculate();
+                }
                 TextView nowtext=(TextView)findViewById(R.id.Output);
                 nowtext.setText(Mycalculator.getExpressions());
             }
@@ -60,32 +63,69 @@ public class MainActivity extends AppCompatActivity {
                     RadioButton now=(RadioButton)group.getChildAt(i);
                     if(now.isChecked()){
                         EditText editr=(EditText)findViewById(R.id.Editr),editn=(EditText)findViewById(R.id.Editn);
-                        double r=Double.valueOf(editr.getText().toString()),n=Double.valueOf(editn.getText().toString());
-                        if(i<=1&&(r!=(int)r||n!=(int)n)){
-                            Mycalculator.setExpressions("Wrong Input!");
-                            mytexta.setText(Mycalculator.getExpressions());
-                        }
-                        else{
-                            switch(i){
-                                case 0:
-                                    Mycalculator.Combination((int)n,(int)r);
-                                    break;
-                                case 1:
-                                    Mycalculator.Permutation((int)n,(int)r);
-                                    break;
-                                case 2:
-                                    Mycalculator.Power(n,r);
-                                    break;
-                                default:
-                                    break;
-                            }
-                            String nowexp=Mycalculator.getExpressions();
-                            if(nowexp.equals("Wrong Input!")){
+                        String rstr=editr.getText().toString(),nstr=editn.getText().toString();
+                        if(rstr.length()>0&&nstr.length()>0){
+                            double r=Double.valueOf(editr.getText().toString()),n=Double.valueOf(editn.getText().toString());
+                            if(i<=1&&(r!=(int)r||n!=(int)n)){
+                                Mycalculator.setExpressions("Wrong Input!");
                                 mytexta.setText(Mycalculator.getExpressions());
                             }
                             else{
-                                mytextb.setText(Mycalculator.getExpressions());
+                                switch(i){
+                                    case 0:
+                                        Mycalculator.Combination((int)n,(int)r);
+                                        break;
+                                    case 1:
+                                        Mycalculator.Permutation((int)n,(int)r);
+                                        break;
+                                    case 2:
+                                        Mycalculator.Power(n,r);
+                                        break;
+                                    default:
+                                        break;
+                                }
+                                String nowexp=Mycalculator.getExpressions();
+                                if(nowexp.equals("Wrong Input!")){
+                                    mytexta.setText(Mycalculator.getExpressions());
+                                }
+                                else{
+                                    mytextb.setText(Mycalculator.getExpressions());
+                                }
                             }
+                        }
+                    }
+                }
+            }
+        });
+        newbut=(Button)findViewById(R.id.butTo_radix);
+        newbut.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                Mycalculator.Clear();
+                RadioGroup groupA=(RadioGroup)findViewById(R.id.radixA),groupB=(RadioGroup)findViewById(R.id.radixB);
+                TextView mytextb=(TextView)findViewById(R.id.Result_radix);
+                mytextb.setText("");
+                TextView mytexta=(TextView)findViewById(R.id.Output);
+                mytexta.setText("");
+                int from=0,to=0;
+                for(int i=0;i<groupA.getChildCount();++i){
+                    RadioButton nowfrom=(RadioButton)groupA.getChildAt(i);
+                    if(nowfrom.isChecked()){
+                        EditText nowedit=(EditText)findViewById(R.id.Edit_radix);
+                        Mycalculator.setExpressions(nowedit.getText().toString());
+                        from=Radix_number[i];
+                    }
+                }
+                for(int i=0;i<groupA.getChildCount();++i){
+                    RadioButton nowto=(RadioButton)groupB.getChildAt(i);
+                    if(nowto.isChecked()){
+                        to=Radix_number[i];
+                        if(from!=0)Mycalculator.changeRadix(from,to);
+                        if(Mycalculator.getExpressions().equals("Wrong Input!")){
+                            mytexta.setText(Mycalculator.getExpressions());
+                        }
+                        else{
+                            mytextb.setText(Mycalculator.getExpressions());
                         }
                     }
                 }
@@ -97,7 +137,7 @@ public class MainActivity extends AppCompatActivity {
         newbut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Mycalculator.Calculate();
+                if(Mycalculator.getExpressions().length()>0)Mycalculator.Calculate();
                 TextView nowtext=(TextView)findViewById(R.id.input);
                 nowtext.setText(Mycalculator.getExpressions());
             }

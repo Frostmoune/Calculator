@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:columnCount="5"
         android:orientation="horizontal"
-        android:rowCount="13"
+        android:rowCount="20"
         android:background="@color/background">
         <!--表示是网格布局-->
         <!--列数为5，行数为7-->
@@ -187,6 +187,61 @@
         <TextView
             style="@style/output_2"
             android:id="@+id/Output_2"
+            />
+        <RadioGroup
+            android:id="@+id/radixA"
+            style="@style/Radio"
+            >
+            <RadioButton
+                style="@style/select_for_radix"
+                android:id="@+id/binaryA"
+                android:text="Binary"/>
+            <RadioButton
+                style="@style/select_for_radix"
+                android:id="@+id/OctalA"
+                android:text="Octal"/>
+            <RadioButton
+                style="@style/select_for_radix"
+                android:id="@+id/DecA"
+                android:text="Dec"/>
+            <RadioButton
+                style="@style/select_for_radix"
+                android:id="@+id/HexA"
+                android:text="Hex"/>
+        </RadioGroup>
+        <EditText
+            style="@style/edit_text"
+            android:id="@+id/Edit_radix"
+            />
+        <Button
+            style="@style/buttong"
+            android:id="@+id/butTo_radix"
+            android:text="To"
+            />
+        <RadioGroup
+            android:id="@+id/radixB"
+            style="@style/Radio_for_radix"
+            >
+            <RadioButton
+                style="@style/select_for_radix"
+                android:id="@+id/binaryB"
+                android:text="Binary"/>
+            <RadioButton
+                style="@style/select_for_radix"
+                android:id="@+id/OctalB"
+                android:text="Octal"/>
+            <RadioButton
+                style="@style/select_for_radix"
+                android:id="@+id/DecB"
+                android:text="Dec"/>
+            <RadioButton
+                style="@style/select_for_radix"
+                android:id="@+id/HexB"
+                android:text="Hex"/>
+        </RadioGroup>
+        <TextView
+            android:id="@+id/Result_radix"
+            style="@style/result_radix"
             />
     </GridLayout>
 </ScrollView>
